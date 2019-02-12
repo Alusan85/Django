@@ -26,7 +26,8 @@ from products.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('products.urls')),
-    path('', include('main.urls'))
+    path('', include('main.urls')),
+    path('auth/', include('accounts.urls' , namespace= 'auth')),
 ]
 
 if settings.DEBUG:

@@ -7,14 +7,19 @@ from django.http import HttpResponse
 
 def index(request):
   
-    template = get_template(
-        'main/index.html'
-    )
-    context = {
-        'name': 'User'
-    }
-    return HttpResponse(
-        template.render(context)
+ #   template = get_template(
+#        'main/index.html'
+ #   )
+#    context = {
+#       'name': 'Вася'
+#    }
+#    return HttpResponse(
+#        template.render(context)
+#    )
+
+    return render(
+        request,
+        'main/index.html',
     )
 
 def about(request):
@@ -27,7 +32,21 @@ def about(request):
     )
 
 def contacts(request):
-    rendered_page = render_to_string(
+#    rendered_page = render_to_string(
+#        'main/contacts.html',
+#        {
+#            'contacts': [
+#                'Путеводитель',
+#                'Продажа сувенирной продукции',
+#                'Инструктаж',
+#            ]
+#        }
+#    )
+#    return HttpResponse(
+#        rendered_page
+#    )
+    return render(
+        request,
         'main/contacts.html',
         {
             'contacts': [
@@ -36,7 +55,4 @@ def contacts(request):
                 'Инструктаж',
             ]
         }
-    )
-    return HttpResponse(
-        rendered_page
     )

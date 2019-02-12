@@ -49,12 +49,34 @@
                         <a href="{% url 'contacts' %}" class="navigation-list__item-link">
                         </a>
                     </li>
+                    
+                    {% if user.is_authenticated %}
+                    	<li class="navigation-list__item">
+                        <a href="{% url 'auth:edit' %}">
+                            {{ user.first_name|default:'Пользователь' }}
+                        </a>
+                        </li>
+                    {% endif %}
+                    
+                    
+                        {% if user.is_authenticated %}
+                        <li class="navigation-list__item">
+                        <span class="navigation-list__item-text">
+                        <a href="{% url 'auth:logout' %}">Выйти</a>
+                        {% else %}
+                        <a href="{% url 'auth:login' %}">Войти</a>
+                        </span>
+                    	</li>
+                        {% endif %}
+                       
+
                 </ul>
             </nav>
         </header>
         <div class="page__content">
 
             {% block page_content %}
+            
             {% endblock %}
 
         </div>
