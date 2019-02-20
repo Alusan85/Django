@@ -1,0 +1,30 @@
+{% extends 'server/master.html' %}
+
+{% load static %}
+
+{% block page_static %}
+<link rel="stylesheet" href="{% static 'products/css/list.css' %}">
+{% endblock %}
+
+{% block page_content %}
+<h1> Корзина </h1>
+sdfsdfsdfsdfsdfsdfsdfsfd
+<div class="products">
+	ddsdfsdffsfsf
+    {% for object in object_list %}
+    <div class="products__item">
+
+        <span class="products__item-name">
+            {{ object.product|default:"---"|title }}
+        </span>
+        
+        <span class="products__item-description">
+            {{ object.quantity }}
+        </span>
+
+    </div>
+
+  
+    {% endfor %}
+</div>
+{% endblock %}
