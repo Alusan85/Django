@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from django.conf.urls.static import static
 from django.conf import settings
 
 from products.views import (
     product_list_view
+)
+from basket.views import(
+    basket_view
 )
 
 urlpatterns = [
@@ -28,6 +30,7 @@ urlpatterns = [
     path('catalog/', include('products.urls')),
     path('', include('main.urls')),
     path('auth/', include('accounts.urls' , namespace= 'auth')),
+    path('basket/', include('basket.urls' , namespace= 'basket')),
 ]
 
 if settings.DEBUG:

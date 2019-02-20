@@ -49,6 +49,25 @@
                         <a href="{% url 'contacts' %}" class="navigation-list__item-link">
                         </a>
                     </li>
+                    
+                    <li class="navigation-list__item">
+                        <span class="navigation-list__item-text">
+                            Корзина
+                        </span>
+                        <a href="{% url 'basket:view' %}" class="navigation-list__item-link">
+                        </a>
+                    </li>
+
+                    <li class="navigation-list__item">
+                        <span class="navigation-list__item-text">
+                        
+                    {% if basket %}
+                    	{{object_list|length}}
+       				{% endif %}
+       				 </span>
+                    </li>
+
+
 
                     {% if user.is_authenticated %}
                     <li class="navigation-list__item">

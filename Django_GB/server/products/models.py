@@ -24,16 +24,26 @@ class Category(models.Model):
 
 class Product(models.Model):
 
-    name = models.CharField(
-        max_length=255
-    )
-
     category = models.ForeignKey(
     	Category,
     	on_delete=models.CASCADE,
         blank=True,
         null=True,   	
+    )    
+
+    name = models.CharField(
+        max_length=255,
     )
+
+    image = models.ImageField(
+        upload_to='products_images',
+        blank=True,
+    )
+ 
+    short_desc = models.CharField(
+ 		max_length=60,
+ 		blank=True,
+ 	)
     
     description = models.TextField(
         blank=True,
@@ -43,13 +53,12 @@ class Product(models.Model):
     cost = models.DecimalField(
 		max_digits=12,
 		decimal_places=2,
-        default=0
+        default=0,
     )
 
-    image = models.ImageField(
-        upload_to='products_images',
-        blank=True
-    )
+    quantity = models.PositiveIntegerField(
+    	default=0,
+   	)
 
     created = models.DateTimeField(
     	auto_now_add=True,

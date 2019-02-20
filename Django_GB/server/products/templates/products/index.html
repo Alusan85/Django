@@ -7,11 +7,29 @@
 {% endblock %}
 
 {% block page_content %}
+
+<h1> Категории продуктов: </h1>
 <div class="products">
+    {% for object in object_list1 %}
+        <div class="products__item">
+        <span class="products__item-name">
+            {{ object.name|default:"По умолчанию"|title }}
+        </span>
+        
+    </div>
+    {% endfor %}
+</div>
+
+<h1> Товары: </h1>
+<div class="products">
+
     {% for object in object_list %}
     <div class="products__item">
         <span class="products__item-name">
             {{ object.name|default:"По умолчанию"|title }}
+        </span>
+        <span class="products__item-name">
+            {{ object.category|default:"---"|title }}
         </span>
         <span class="products__item-description">
             {{ object.description }}
@@ -29,7 +47,10 @@
         <a href="{% url 'detail' pk=object.id %}" class="products__item-link">
             Ссылка на {{ object.name|lower }}
         </a>
-    </div>
+      </div>
+          <a href="{% url 'basket:add' pk=object.id %}"> <img src="{% static 'products/img/buy.png' %}" width=50 height=50 /> </a>
+
+    
     {% endfor %}
 </div>
 {% endblock %}
